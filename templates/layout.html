@@ -1,5 +1,9 @@
 {% extends "bootstrap/base.html" %}
 
+{% block html_attribs %}
+  lang="en" ng-app="monsterX"
+{% endblock %}
+
 {% block styles %}
   {{ super() }}
   <link href="/static/css/style.css" rel="stylesheet">
@@ -29,7 +33,17 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container" id="container-page">
-    {% block page_content %}{% endblock %}
+  <div class="container" id="container-page" ng-view>
   </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/static/js/vendor/jssip-0.3.0.min.js"></script>
+  <script src="/static/js/vendor/angular.min.js"></script>
+  <script src="/static/js/vendor/angular-route.min.js"></script>
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/controllers.js"></script>
+  <script src="/static/js/services.js"></script>
 {% endblock %}
