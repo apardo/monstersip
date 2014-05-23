@@ -4,8 +4,8 @@ monsterxSrvs.factory('sipSrv', function() {
 
 	function SIP(username, password) {
 
-		var selfView =   document.getElementById('selfVideo');
-		var remoteView =  document.getElementById('remoteVideo');
+		var selfView = document.getElementById('selfVideo');
+		var remoteView = document.getElementById('remoteVideo');
 
 		var username = username;
 		var password = password;
@@ -34,9 +34,13 @@ monsterxSrvs.factory('sipSrv', function() {
 
 			var call = e.data.session;
 
-			call.on('started', function(e) {
+			if (call.direction === 'incoming') {
+				call.answer({
+					'mediaConstraints': {'audio': true, 'video': true}
+				});
+			}
 
-				console.log("DATA: "+e);
+			call.on('started', function(e) {
 
 				if ( call.getLocalStreams().length > 0) {
 			    	selfView.src = window.URL.createObjectURL(call.getLocalStreams()[0]);

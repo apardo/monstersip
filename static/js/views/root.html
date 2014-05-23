@@ -1,11 +1,11 @@
-<div class="row" ng-controller="rootCtrl">
+<div class="row" ng-controller="rootCtrl" style="margin-top:20px;">
 
 	<div class="col-md-6 userVideoDiv">
-		<video id="selfVideo" autoplay hidden=true></video>
+		<video id="selfVideo" width="320" height="240" autoplay></video>
 	</div>
 
 	<div class="col-md-6 userVideoDiv">
-		<video id="remoteVideo" autoplay hidden=true></video>
+		<video id="remoteVideo" width="320" height="240" autoplay></video>
 	</div>
 
 </div>
@@ -29,6 +29,7 @@
       	  </div>
       </div>
       <div class="modal-footer">
+        <a href="/signup" type="button" class="btn btn-danger" style="float:left;">Signup</a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Login</button>
       </div>

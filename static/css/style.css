@@ -6,3 +6,8 @@
 	border: 1px solid black;
 	height: 500px;
 }
+
+#date {
+	color: #fff;
+	margin-top:10px;
+}

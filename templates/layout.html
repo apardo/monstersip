@@ -6,7 +6,7 @@
 
 {% block styles %}
   {{ super() }}
-  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="{{ url_for("static", filename="css/style.css") }}" rel="stylesheet">
 {% endblock %}
 
 {% block navbar %}
@@ -27,23 +27,30 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <span id="date" class="navbar-right">The local date and time is {{ moment(current_time).format('LLL') }}</span>
       </div><!--/.nav-collapse -->
     </div>
   </div>
 {% endblock %}
 
 {% block content %}
-  <div class="container" id="container-page" ng-view>
+  <div class="container" id="container-page">
+    {% block page_content %}{% endblock %}
   </div>
 {% endblock %}
 
+
+
 {% block scripts %}
   {{ super() }}
-  <script src="/static/js/vendor/jssip-0.3.0.min.js"></script>
-  <script src="/static/js/vendor/angular.min.js"></script>
-  <script src="/static/js/vendor/angular-route.min.js"></script>
+  
+  {{ moment.include_moment() }}
 
-  <script src="/static/js/app.js"></script>
-  <script src="/static/js/controllers.js"></script>
-  <script src="/static/js/services.js"></script>
+  <script src="{{ url_for("static", filename="js/vendor/jssip-0.3.0.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/vendor/angular.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/vendor/angular-route.min.js") }}"></script>
+
+  <script src="{{ url_for("static", filename="js/app.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/controllers.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/services.js") }}"></script>
 {% endblock %}
